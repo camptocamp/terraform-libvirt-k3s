@@ -61,7 +61,7 @@ resource "libvirt_domain" "k3os_server" {
   cmdline = [
     {
       "k3os.fallback_mode"      = "install"
-      "k3os.install.config_url" = "https://raw.githubusercontent.com/mcanevet/camptocamp-devops-stack/libvirt/modules/k3os-libvirt/config-server.yaml"
+      "k3os.install.config_url" = "https://raw.githubusercontent.com/camptocamp/terraform-libvirt-k3os/master/config-server.yaml"
       "k3os.install.silent"     = true
       "k3os.install.device"     = "/dev/vda"
       "k3os.token"              = random_password.k3s_token.result
@@ -105,7 +105,7 @@ resource "libvirt_domain" "k3os_agent" {
   cmdline = [
     {
       "k3os.fallback_mode"      = "install"
-      "k3os.install.config_url" = "https://raw.githubusercontent.com/mcanevet/camptocamp-devops-stack/libvirt/modules/k3os-libvirt/config-agent.yaml"
+      "k3os.install.config_url" = "https://raw.githubusercontent.com/camptocamp/terraform-libvirt-k3os/master/config-agent.yaml"
       "k3os.install.silent"     = true
       "k3os.install.device"     = "/dev/vda"
       "k3os.server_url"         = format("https://%s:6443", libvirt_domain.k3os_server.network_interface.0.addresses.0)
