@@ -148,7 +148,7 @@ resource "null_resource" "get_kubeconfig" {
   ]
 
   provisioner "local-exec" {
-    command = "ssh -o StrictHostKeyChecking=no -i ${path.module}/id_ed25519 rancher@${libvirt_domain.k3os_server.network_interface.0.addresses.0} cat /etc/rancher/k3s/k3s.yaml > ${path.cwd}/kubeconfig.yaml"
+    command = "chmod 0600 ${path.module}/id_ed25519 && ssh -o StrictHostKeyChecking=no -i ${path.module}/id_ed25519 rancher@${libvirt_domain.k3os_server.network_interface.0.addresses.0} cat /etc/rancher/k3s/k3s.yaml > ${path.cwd}/kubeconfig.yaml"
   }
 }
 
