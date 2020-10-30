@@ -53,7 +53,8 @@ resource "libvirt_volume" "k3os_server" {
 resource "libvirt_domain" "k3os_server" {
   name = "k3os-server-${var.cluster_name}"
 
-  memory = 1024
+  vcpu   = var.server_vcpu
+  memory = var.server_memory
 
   kernel = libvirt_volume.kernel.id
   initrd = libvirt_volume.initrd.id
@@ -97,7 +98,9 @@ resource "libvirt_domain" "k3os_agent" {
 
   name = "k3os-agent-${var.cluster_name}-${count.index}"
 
-  memory = 1024
+  vcpu   = var.agent_vcpu
+  memory = var.agent_memory
+
 
   kernel = libvirt_volume.kernel.id
   initrd = libvirt_volume.initrd.id

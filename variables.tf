@@ -26,3 +26,27 @@ variable "wait_for_cluster_interpreter" {
   type        = list(string)
   default     = ["/bin/sh", "-c"]
 }
+
+variable "server_vcpu" {
+  description = "The amount of virtual CPUs to allocate to the server."
+  type        = number
+  default     = 1
+}
+
+variable "server_memory" {
+  description = "The amount of memory in MiB to allocate to the server."
+  type        = number
+  default     = 1024
+}
+
+variable "agent_vcpu" {
+  description = "The amount of virtual CPUs to allocate to the agents."
+  type        = number
+  default     = 1
+}
+
+variable "agent_memory" {
+  description = "The amount of memory in MiB to allocate to the agents."
+  type        = number
+  default     = 1024
+}
