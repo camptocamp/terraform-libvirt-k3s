@@ -1,0 +1,7 @@
+#cloud-config
+ssh_authorized_keys:
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAWW/r4lefNWqQ2g4RRrNe9wlVdhHq2xIJkXsYwgfjO5"
+
+k3os:
+  k3s_args:
+    - "agent"
