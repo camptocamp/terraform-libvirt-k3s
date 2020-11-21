@@ -151,7 +151,7 @@ resource "null_resource" "wait_for_kubeconfig" {
   ]
 
   provisioner "local-exec" {
-    command = "for i in `seq 1 60`; do test -f ${path.cwd}/kubeconfig.yaml && exit 0 || true; sleep 5; done; echo TIMEOUT && exit 1"
+    command = "chmod 0600 ${path.module}/id_ed25519 && ssh -o StrictHostKeyChecking=no -i ${path.module}/id_ed25519 rancher@${libvirt_domain.k3os_server.network_interface.0.addresses.0} for i in `seq 1 60`; do test -f /etc/rancher/k3s/k3s.yaml && exit 0 || true; sleep 5; done; echo TIMEOUT && exit 1"
   }
 }
 
