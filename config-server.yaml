@@ -6,3 +6,4 @@ k3os:
   k3s_args:
     - "server"
     - "--disable=traefik"
+    - "--disable=metrics-server"
