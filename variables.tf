@@ -39,6 +39,12 @@ variable "server_memory" {
   default     = 1024
 }
 
+variable "server_volume_size" {
+  description = "The size of the volume in bytes attached to the server"
+  type        = number
+  default     = 10737418240
+}
+
 variable "agent_vcpu" {
   description = "The amount of virtual CPUs to allocate to the agents."
   type        = number
@@ -49,4 +55,10 @@ variable "agent_memory" {
   description = "The amount of memory in MiB to allocate to the agents."
   type        = number
   default     = 1024
+}
+
+variable "agent_volume_size" {
+  description = "The size of the volume in bytes attached to the agents"
+  type        = number
+  default     = 10737418240
 }

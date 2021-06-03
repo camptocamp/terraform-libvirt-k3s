@@ -45,7 +45,7 @@ resource "libvirt_volume" "iso" {
 
 resource "libvirt_volume" "k3os_server" {
   name   = "k3os-server.raw"
-  size   = "10737418240"
+  size   = var.server_volume_size
   format = "raw"
   pool   = libvirt_pool.cluster.name
 }
@@ -88,7 +88,7 @@ resource "libvirt_volume" "k3os_agent" {
   count = var.node_count
 
   name   = "k3os-server-${count.index}.raw"
-  size   = "10737418240"
+  size   = var.agent_volume_size
   format = "raw"
   pool   = libvirt_pool.cluster.name
 }
